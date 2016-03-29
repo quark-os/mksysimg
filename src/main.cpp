@@ -6,12 +6,14 @@ using namespace std;
 enum FlagState
 {
 	NONE,
-	OUTFILE
+	OUTFILE,
+	MBRFILE
 };
 
 int main(int argc, char** args)
 {
-	string outputFile;
+	string outputFile = "sys.img";
+	string mbrFile = "";
 	list<Partition> parts;
 	FlagState flagState = NONE;
 	for(size_t index = 1; index < argc; index++)
@@ -28,6 +30,10 @@ int main(int argc, char** args)
 			{
 				flagState = OUTFILE;
 			}
+			else if(arg == "-m")
+			{
+				flagState = MBRFILE;
+			}
 			break;
 		case OUTFILE:
 			if(arg[0] != '-')
@@ -38,11 +44,23 @@ int main(int argc, char** args)
 			{
 				cout << "Invalid use of -o" << endl;
 				return -1;
+			flagState = NONE;
+			break;
+		case MBRFILE:
+			if(arg[0] != '-')
+			{
+				mbrFile = arg;
 			}
+			else
+			{
+				cout << "Invalid use of -m" << endl;
+				return -1;
+			}
+			flagState = NONE;
 		}
 	}
 	
-	GPT disk(parts);
+	GPT disk(parts, mbrFile);
 	disk.write(outputFile);
 	return 0;
 }

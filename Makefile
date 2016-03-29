@@ -3,3 +3,6 @@ CPPFLAGS += -std=c++11 -lfsutil -Iinclude/
 
 mksysimg: $(addprefix src/, $(objects))
 	g++ $(CPPFLAGS) $(addprefix src/, $(objects)) -o bin/mksysimg
+
+install:
+	cp bin/mksysimg /bin

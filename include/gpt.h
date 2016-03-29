@@ -38,7 +38,7 @@ public:
 
 	GPT();
 	
-	GPT(list<Partition>& parts);
+	GPT(list<Partition>& parts, string mbrFile);
 	
 	void write(string file);
 			

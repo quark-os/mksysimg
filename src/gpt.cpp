@@ -32,9 +32,10 @@ GPT::GPT()
 	
 }
 
-GPT::GPT(list<Partition>& parts)
+GPT::GPT(list<Partition>& parts, string mbrFile)
 {
 	this->parts = parts;
+	this->mbrFile = mbrFile;
 }
 
 void GPT::write(string file)
