@@ -44,6 +44,7 @@ int main(int argc, char** args)
 			{
 				cout << "Invalid use of -o" << endl;
 				return -1;
+			}
 			flagState = NONE;
 			break;
 		case MBRFILE:
