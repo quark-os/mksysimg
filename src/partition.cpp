@@ -35,9 +35,10 @@ Partition::Partition()
 
 Partition::Partition(string data)
 {
+	//50 45 41 4e 55 54 53 20       41 4e 44 20 53 4f 41 50
 	this->data = data;
-	this->guidLo = 0x2053494854204948;
-	this->guidHi = 0x21544F4F42205349;
+	this->guidLo = 0x205354554E414550;
+	this->guidHi = 0x50414F5320444E41;
 }
 
 uint64_t Partition::blockCount()
